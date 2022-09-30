@@ -15,7 +15,7 @@ function writePassword() {
 function generatePassword() {
   var generatedPassword ="";
   var passwordLength = prompt("How many characters do you want in your password?");
-
+  
   // Makes sure the length is within parameters
   if (passwordLength < 8){
     alert("Password must be at least 8 characters.");
@@ -23,6 +23,7 @@ function generatePassword() {
   } else if (passwordLength > 128){
     alert("Password must be less than 128 characters.")
     generatePassword();
+  // If desired length is within range, next questions are asked and an array containing the wanted character types is created
   }else{
     questions();
     createNewArray();
@@ -99,8 +100,10 @@ function createNewArray(){
   }else if(!uppercasing && lowercasing && !numbers && !specialChar){
     temp = lowercaseLetters;
   //3
-  }else{
+  }else if(!uppercasing && !lowercasing && numbers && !specialChar){
     temp = numberList
+  }else{
+    alert("No password generated.")
   }
   return temp;
 }
