@@ -13,8 +13,10 @@ function writePassword() {
 
 // Creates the password
 function generatePassword() {
+  var generatedPassword ="";
   var passwordLength = prompt("How many characters do you want in your password?");
 
+  // Makes sure the length is within parameters
   if (passwordLength < 8){
     alert("Password must be at least 8 characters.");
     generatePassword();
@@ -26,11 +28,12 @@ function generatePassword() {
     createNewArray();
   }
 
+  // Loop will continue obtaining random characters from the new array until the prompt length is reached
   for (var i = 0; i < passwordLength; i++){
-    var generatedPassword = "";
-    var count = 0;
-    var temp ="";
     var randomNumber = Math.floor(Math.random()*(temp.length));
+    generatedPassword = generatedPassword + temp.charAt(randomNumber);
+  }
+  return generatedPassword;
 }
 
 var uppercasing;
@@ -43,9 +46,10 @@ function questions(){
   uppercasing = confirm("Do you want to use uppercase letters in the password?");
   lowercasing = confirm("Do you want to use lowercase letters in the password?");
   numbers = confirm("Do you want to use numbers in the password?");
-  specialChar = confirm("Do you want to use special characters in the password?")
+  specialChar = confirm("Do you want to use special characters in the password?");
 }
 
+// Creates new array based on the questions
 function createNewArray(){
   var uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   var lowercaseLetters = "abcdefghijklmnopqrstuvwxyz"
@@ -101,14 +105,6 @@ function createNewArray(){
   return temp;
 }
 
-
-for (i = 0; i < passwordLength; i++){
-  var generatedPassword = "";
-  var count = 0;
-  var temp ="";
-  var randomNumber = Math.floor(Math.random()*(generatedPassword.length));
-
- 
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
